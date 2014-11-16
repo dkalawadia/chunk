@@ -4,7 +4,8 @@
 
 var mongoose = require('mongoose');
 var moment = require('moment');
-var db = mongoose.createConnection(process.env.OPENSHIFT_MONGODB_DB_URL+'/remittance' ||'localhost:27017/remittance' );//mongoose.createConnection('localhost:27017/remittance');
+var db = mongoose.createConnection(process.env.OPENSHIFT_MONGODB_DB_URL+'/remittance' ||'127.0.0.1:27017/remittance' );
+//mongoose.createConnection('localhost:27017/remittance');
 var Schema = mongoose.Schema;
 var ObjectId = Schema.ObjectId;
 
