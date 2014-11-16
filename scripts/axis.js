@@ -13,7 +13,7 @@ var country = new Array('CA','EU','HK','SG','AE','GB','US');
 * This function does the web scraping of Axis bank exchange rates
 * */
 var parseAxisbank = function(appModel){
-
+    request = request.defaults({jar:true,proxy:'http://webproxy.merck.com:8080'})
     country.forEach(function(cntry){
         var url = 'https://axisremit.axisbank.co.in/remittance/showExchangeRates.action?fromCountry='+cntry;
         request(url, function(err, resp, body){
@@ -59,6 +59,7 @@ var parseAxisbank = function(appModel){
                         exchangeRates.push(ExchangeRate);
                     }
                 });
+
                 // creating remit schema
                 var remit = {
                     companyName: "AXIS BANK",
@@ -68,7 +69,7 @@ var parseAxisbank = function(appModel){
                     exchangeMode: mode,
                     exchangeType: type,
                     insertDate: moment().month()+"-"+moment().date()+"-"+moment().year(),
-                    updateDate: Date.now(),
+                    updateDate: moment(),
                     exchangeRates:exchangeRates
                 };
 
@@ -78,6 +79,7 @@ var parseAxisbank = function(appModel){
                         fromCurrency:currency,
                         exchangeMode: mode,
                         exchangeType: type,
+                        companyAbbr:"AXIS",
                         insertDate:moment().month()+"-"+moment().date()+"-"+moment().year()
                     },
                     remit,

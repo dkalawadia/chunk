@@ -4,7 +4,7 @@
 
 var mongoose = require('mongoose');
 var moment = require('moment');
-var db = mongoose.createConnection('localhost:27017/remittance');
+var db = mongoose.createConnection(process.env.OPENSHIFT_MONGODB_DB_URL+'/remittance' ||'localhost:27017/remittance' );//mongoose.createConnection('localhost:27017/remittance');
 var Schema = mongoose.Schema;
 var ObjectId = Schema.ObjectId;
 
@@ -28,7 +28,7 @@ var AppModel = function() {
         exchangeMode: String,
         exchangeType: String,
         insertDate: {type: String, default: moment().month()+"-"+moment().date()+"-"+moment().year()},
-        updateDate: { type: Date, default: Date.now },
+        updateDate: { type: Date, default: moment().format() },
         exchangeRates: [
             {
                 slabSeq: Number,

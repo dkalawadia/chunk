@@ -4,9 +4,14 @@
  */
 var appModel = require('../model/appModel.js').appModel;
 var axis = require('./axis.js');
-
+var xoom = require('./xoom.js');
+var icici = require('./icici.js');
+var indus = require('./indus.js');
 var appModel = new appModel();
 
-//setInterval(function() {
+setInterval(function() {
     axis.parseAxisbank(appModel);
-//}, 5000);
+    icici.parseICICIBank(appModel);
+    xoom.parseXoom(appModel);
+    indus.parseIndus(appModel);
+}, 60000);
