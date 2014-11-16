@@ -28,7 +28,7 @@ var transferType = new Array("FIXED","INDICATIVE");
  * This function does the web scraping of ICICI bank exchange rates
  * */
 var parseICICIBank = function(appModel){
-    request = request.defaults({jar:true,proxy:'http://webproxy.merck.com:8080'})
+    request = request.defaults({jar:true})
     var currencyName = _.keys(currencyId);
     var currencyIds  = _.values(currencyId);
     var count=0;

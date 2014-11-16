@@ -11,7 +11,7 @@ var mailer = require('../util/mailer.js');
  * This function does the web scraping of Xoom's exchange rates
  * */
 var parseXoom = function(appModel){
-    request = request.defaults({jar:true,proxy:'http://webproxy.merck.com:8080'});
+    request = request.defaults({jar:true});
     var url = 'https://www.xoom.com/ajax/options-xfer-amount-ajax?receiveCountryCode=IN&sendAmount=50';
     request(url, function(err, resp, body){
         if(err) {

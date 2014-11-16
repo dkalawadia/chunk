@@ -13,7 +13,7 @@ var country = new Array('CA','EU','HK','SG','AE','GB','US');
 * This function does the web scraping of Axis bank exchange rates
 * */
 var parseAxisbank = function(appModel){
-    request = request.defaults({jar:true,proxy:'http://webproxy.merck.com:8080'})
+    request = request.defaults({jar:true})
     country.forEach(function(cntry){
         var url = 'https://axisremit.axisbank.co.in/remittance/showExchangeRates.action?fromCountry='+cntry;
         request(url, function(err, resp, body){

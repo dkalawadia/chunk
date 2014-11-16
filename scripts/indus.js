@@ -10,7 +10,7 @@ var moment = require('moment');
  * This function does the web scraping of Xoom's exchange rates
  * */
 var parseIndus = function(appModel){
-    request = request.defaults({jar:true,proxy:'http://webproxy.merck.com:8080'});
+    request = request.defaults({jar:true});
     var url = 'https://www.indusfastremit.com';
     request({url:url,
         headers:{
